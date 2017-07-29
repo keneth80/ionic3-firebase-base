@@ -4,15 +4,40 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Home</ion-title>
+    <ion-buttons end>
+      <button color="primary" ion-button icon-only (click)="signOut()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <ion-grid text-center>
+    <ion-row>
+      <ion-col>
+        <h1 class='heading-style'>Kenneth's Ionic 3</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button secondary menuToggle>Toggle Menu</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button (click)="display()">Image Display</button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <img src="{{imgsource}}">
+      </ion-col>
+    </ion-row>
+    <!--<ion-row >      
+      <ion-col center text-center>       
+       <button ion-button  outline  (click)="login()" > <ion-icon ios="logo-facebook" md="logo-facebook" style='margin-right:5px'></ion-icon>   Login with facebook</button>
+      </ion-col>
+    </ion-row>-->
+  </ion-grid>
 </ion-content>

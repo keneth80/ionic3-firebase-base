@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
+import firebase from 'firebase';
+
 
 @Component({
   selector: 'page-home',
@@ -7,8 +10,24 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  imgsource: any;
+  firestore = firebase.storage().ref();
+
+  constructor(public navCtrl: NavController,
+    private auth: AngularFireAuth,
+    public zone: NgZone) {
 
   }
 
+  signOut() {
+    this.auth.auth.signOut();
+  }
+
+  display() {
+    this.firestore.child('images/profile/1500210446.jpg').getDownloadURL().then((url) => {
+      this.zone.run(() => {
+        this.imgsource = url;
+      })
+    })
+  }
 }
