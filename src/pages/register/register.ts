@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 
-import { HomePage } from '../home/home';
 import { LoginPage } from '../login/login';
 import { ProfilePage } from '../profile/profile';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
@@ -20,9 +19,7 @@ export class RegisterPage {
     items: FirebaseListObservable<any>;
 
     constructor(public navCtrl: NavController,
-        public navParams: NavParams,
         private loadingCtrl: LoadingController,
-        private afAuth: AngularFireAuth,
         private authService: AuthProvider,
         private afDB: AngularFireDatabase) {
         // Firebase database

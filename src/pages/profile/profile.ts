@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+import { AlertController, ToastController } from 'ionic-angular';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
@@ -10,7 +10,6 @@ import firebase from 'firebase';
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
-
   public photos: any;
   public base64Image: string;
   public processString: string;
@@ -19,8 +18,7 @@ export class ProfilePage {
   private sendImage: string;
   private imageblob: any;
 
-  constructor(public navCtrl: NavController,
-    public domSanitizer: DomSanitizer,
+  constructor(public domSanitizer: DomSanitizer,
     private camera: Camera,
     private alertCtrl: AlertController,
     private toastCtrl: ToastController) { }

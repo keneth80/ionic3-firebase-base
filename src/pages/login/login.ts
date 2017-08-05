@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, Loading } from 'ionic-angular';
-import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+import { NavController, LoadingController, Loading } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import { RegisterPage } from '../register/register';
@@ -24,11 +23,8 @@ export class LoginPage {
   user: any = {} as User;
 
   constructor(public navCtrl: NavController,
-    public navParams: NavParams,
     private loadingCtrl: LoadingController,
-    private afAuth: AngularFireAuth,
-    private authService: AuthProvider,
-    private facebook: Facebook) {
+    private authService: AuthProvider) {
   }
 
   signin(user: User) {
