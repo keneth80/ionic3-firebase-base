@@ -11,14 +11,11 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class ListPage {
   selectedItem: any;
   icons: string[];
-  items: Array<{ title: string, note: string, icon: string }>;
+  items: FirebaseListObservable<any>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    private afDB: AngularFireDatabase) {
+      this.items = afDB.list('/users');
   }
-
-  getUserList() {
-
-  }
-
 }

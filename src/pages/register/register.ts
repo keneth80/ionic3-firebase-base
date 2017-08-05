@@ -1,56 +1,71 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { HomePage } from '../home/home';
 
-/**
- * Generated class for the RegisterPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { HomePage } from '../home/home';
+import { LoginPage } from '../login/login';
+import { ProfilePage } from '../profile/profile';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AuthProvider } from '../../providers/auth/auth';
+
+import { User } from '../models/user';
 
 @Component({
-  selector: 'page-register',
-  templateUrl: 'register.html',
+    selector: 'page-register',
+    templateUrl: 'register.html',
 })
 export class RegisterPage {
 
-    user: any = {};
+    user: any = {} as User;
+    items: FirebaseListObservable<any>;
 
     constructor(public navCtrl: NavController,
-                public navParams: NavParams,
-                private loadingCtrl: LoadingController,
-                private afAuth: AngularFireAuth) {
+        public navParams: NavParams,
+        private loadingCtrl: LoadingController,
+        private afAuth: AngularFireAuth,
+        private authService: AuthProvider,
+        private afDB: AngularFireDatabase) {
+        // Firebase database
+        this.items = this.afDB.list('/users');
     }
 
-    async register(user: any) {
+    async signup() {
         let loading = this.loadingCtrl.create({
             content: 'Loading...'
         });
         loading.present();
 
         try {
-            const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
-            result.then((result: any) => {
-                //DB insert
-                this.navCtrl.setRoot(HomePage);
-                loading.dismiss();
-            }, (error) => {
-                loading.dismiss();
-                let errortoast = this.loadingCtrl.create({
-                    content: 'Register Error!',
-                    duration: 2000
+            await this.authService.addUser(this.user).then(
+                (user: any) => {
+                    console.log(user);
+                    //DB insert
+                    this.items.push(
+                        {
+                            email: user.email,
+                            uid: user.uid
+                        }
+                    );
+
+                    this.navCtrl.setRoot(ProfilePage);
+                    loading.dismiss();
+                }, (error) => {
+                    loading.dismiss();
+                    let errortoast = this.loadingCtrl.create({
+                        content: 'Register Error!',
+                        duration: 2000
+                    });
+                    errortoast.present();
                 });
-                errortoast.present();
-                console.log(result);
-            })
-            console.log(result);
-            
+
         } catch (err) {
             console.error(err);
             loading.dismiss();
         }
+    }
+
+    goBack() {
+        this.navCtrl.setRoot(LoginPage);
     }
 
     ionViewDidLoad() {

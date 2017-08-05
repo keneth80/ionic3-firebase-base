@@ -14,13 +14,14 @@
 
 
 <ion-content padding>
-    <ion-item>
-        <ion-label floating>Email Address</ion-label>
-        <ion-input type="text" [(ngModel)]="user.email"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Password</ion-label>
-        <ion-input type="password" [(ngModel)]="user.password"></ion-input>
-    </ion-item>
-    <button ion-button color="primary" (click)="register(user);">Register</button>
+  <ion-item>
+    <ion-label floating>Email Address</ion-label>
+    <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Password</ion-label>
+    <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+  </ion-item>
+  <button ion-button color="primary" (click)="signup();">Register</button>
+  <button ion-button full clear color="light" (click)="goback()">Go Back</button>
 </ion-content>

@@ -27,7 +27,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { Facebook } from '@ionic-native/facebook';
 
 //Firebase auth key
-import { FIREBASE_CONFIG } from './config/app.firebase.config';
+import { FIREBASE_CONFIG } from './app.firebase.config';
 
 //Service
 import { AuthProvider } from '../providers/auth/auth';

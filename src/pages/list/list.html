@@ -3,6 +3,26 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+    <ion-title>User List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let item of items | async">
+      <ion-row>
+        <ion-col> {{item.email}} </ion-col>
+          <ion-col> {{item.uid}} </ion-col>
+        </ion-row>
+    </button>
+  </ion-list>
+</ion-content>
+
+<!--<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>List</ion-title>
   </ion-navbar>
 </ion-header>
@@ -20,4 +40,4 @@
   <div *ngIf="selectedItem" padding>
     You navigated here from <b>{{selectedItem.title}}</b>
   </div>
-</ion-content>
+</ion-content>-->

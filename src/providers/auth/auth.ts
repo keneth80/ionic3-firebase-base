@@ -5,26 +5,23 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import 'rxjs/add/operator/map';
 
-/*
-  Generated class for the AuthProvider provider.
+import { User } from '../../pages/models/user';
 
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular DI.
-*/
+
+
 @Injectable()
 export class AuthProvider {
 
   constructor(public http: Http,
-              public angularFireAuth: AngularFireAuth) {
-    console.log('Hello AuthProvider Provider');
+    public angularFireAuth: AngularFireAuth) {
   }
 
-  signInWithEmailAndPassword(email: string, password: string): firebase.Promise<any> {
-    return this.angularFireAuth.auth.signInWithEmailAndPassword(email, password);
+  login(user: User): firebase.Promise<any> {
+    return this.angularFireAuth.auth.signInWithEmailAndPassword(user.email, user.password);
   }
 
-  createUserWithEmailAndPassword(email: string, password: string): firebase.Promise<any> {
-    return this.angularFireAuth.auth.createUserWithEmailAndPassword(email, password);
+  addUser(user): firebase.Promise<any> {
+    return this.angularFireAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
   }
 
   loginWithFacebook() {
