@@ -23,13 +23,4 @@ export class AuthProvider {
   addUser(user): firebase.Promise<any> {
     return this.angularFireAuth.auth.createUserWithEmailAndPassword(user.email, user.password);
   }
-
-  loginWithFacebook() {
-
-  }
-
-  loginWithGoogle() {
-
-  }
-
 }

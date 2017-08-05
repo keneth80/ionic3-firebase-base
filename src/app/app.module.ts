@@ -23,9 +23,6 @@ import { LoginPage } from '../pages/login/login';
 import { RegisterPage } from '../pages/register/register';
 import { ProfilePage } from '../pages/profile/profile';
 
-//Social Login
-import { Facebook } from '@ionic-native/facebook';
-
 //Firebase auth key
 import { FIREBASE_CONFIG } from './config/app.firebase.config';
 
@@ -64,7 +61,6 @@ import { AuthProvider } from '../providers/auth/auth';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    Facebook,
     Camera,
     AuthProvider
   ]

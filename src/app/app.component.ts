@@ -28,7 +28,6 @@ export class MyApp {
     this.pages = [
       { title: 'login', component: LoginPage }
     ];
-
   }
 
   initializeApp() {

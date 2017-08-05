@@ -1,5 +1,4 @@
 import { Component, NgZone } from '@angular/core';
-import { NavController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import firebase from 'firebase';
 
@@ -13,7 +12,7 @@ export class HomePage {
   imgsource: any;
   firestore = firebase.storage().ref();
 
-  constructor(public navCtrl: NavController,
+  constructor(
     private auth: AngularFireAuth,
     public zone: NgZone) {
 
