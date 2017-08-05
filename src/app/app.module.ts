@@ -33,41 +33,41 @@ import { FIREBASE_CONFIG } from './config/app.firebase.config';
 import { AuthProvider } from '../providers/auth/auth';
 
 @NgModule({
-  declarations: [
-    MyApp,
-    TabsPage,
-    HomePage,
-    ListPage,
-    LoginPage,
-    RegisterPage,
-    ProfilePage
-  ],
-  imports: [
-    BrowserModule,
-    HttpModule,
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
-    AngularFireModule.initializeApp(FIREBASE_CONFIG),
-    IonicModule.forRoot(MyApp)
-  ],
-  bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-    TabsPage,
-    HomePage,
-    ListPage,
-    LoginPage,
-    RegisterPage,
-    ProfilePage
-  ],
-  providers: [
-    StatusBar,
-    SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
-    Facebook,
-    Camera,
-    AuthProvider
-  ]
+    declarations: [
+        MyApp,
+        TabsPage,
+        HomePage,
+        ListPage,
+        LoginPage,
+        RegisterPage,
+        ProfilePage
+    ],
+    imports: [
+        BrowserModule,
+        HttpModule,
+        AngularFireDatabaseModule,
+        AngularFireAuthModule,
+        AngularFireModule.initializeApp(FIREBASE_CONFIG),
+        IonicModule.forRoot(MyApp)
+    ],
+    bootstrap: [IonicApp],
+    entryComponents: [
+        MyApp,
+        TabsPage,
+        HomePage,
+        ListPage,
+        LoginPage,
+        RegisterPage,
+        ProfilePage
+    ],
+    providers: [
+        StatusBar,
+        SplashScreen,
+        { provide: ErrorHandler, useClass: IonicErrorHandler },
+        Facebook,
+        Camera,
+        AuthProvider
+    ]
 })
 export class AppModule {
 }
